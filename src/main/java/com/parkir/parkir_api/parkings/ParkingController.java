@@ -28,4 +28,9 @@ public class ParkingController {
     public void createParking(@RequestBody Parking parking) {
         parkingService.createParking(parking);
     }
+
+    @DeleteMapping(path = "/delete/{parkingId}")
+    public void deleteParking(@PathVariable("parkingId") Integer parkingId) {
+        parkingService.deleteParking(parkingId);
+    }
 }

@@ -29,4 +29,12 @@ public class ParkingService {
         }
         parkingRepository.save(parking);
     }
+
+    public void deleteParking(Integer parkingId) {
+        boolean exists = parkingRepository.existsById(parkingId);
+        if (!exists) {
+            throw new IllegalStateException("Parking not exist");
+        }
+        parkingRepository.deleteById(parkingId);
+    }
 }

@@ -10,7 +10,6 @@ import java.time.LocalTime;
 import java.util.List;
 
 @SpringBootApplication
-@RestController
 public class ParkirApiApplication {
 
     public static void main(String[] args) {

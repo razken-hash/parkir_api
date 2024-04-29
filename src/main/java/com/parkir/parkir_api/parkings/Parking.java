@@ -1,13 +1,29 @@
 package com.parkir.parkir_api.parkings;
 
+import jakarta.persistence.*;
+
 import java.time.LocalTime;
 import java.util.List;
 
+@Entity // This one is for Hibernate
+@Table(name = "parkings") // This one is for Database
 public class Parking {
+    @Id
+    @SequenceGenerator(
+            name = "parking_sequence",
+            sequenceName = "parking_sequence",
+            allocationSize = 1
+//            initialValue = 1,
+//            schema = "public"
+    )
+    @GeneratedValue(
+            strategy = GenerationType.SEQUENCE,
+            generator = "parking_sequence"
+    )
     private Integer id;
     private String name;
     private String description;
-    private List<String> images;
+    private String images;
     private String address;
     private String city;
     private Double longitude;
@@ -19,7 +35,7 @@ public class Parking {
     public Parking() {
     }
 
-    public Parking(Integer id, String name, String description, List<String> images, String address, String city, Double longitude, Double latitude, LocalTime openingTime, LocalTime closingTime, Integer pricePerHour) {
+    public Parking(Integer id, String name, String description, String images, String address, String city, Double longitude, Double latitude, LocalTime openingTime, LocalTime closingTime, Integer pricePerHour) {
         this.id = id;
         this.name = name;
         this.description = description;
@@ -33,7 +49,7 @@ public class Parking {
         this.pricePerHour = pricePerHour;
     }
 
-    public Parking(String name, String description, List<String> images, String address, String city, Double longitude, Double latitude, LocalTime openingTime, LocalTime closingTime, Integer pricePerHour) {
+    public Parking(String name, String description, String images, String address, String city, Double longitude, Double latitude, LocalTime openingTime, LocalTime closingTime, Integer pricePerHour) {
         this.name = name;
         this.description = description;
         this.images = images;
@@ -70,11 +86,11 @@ public class Parking {
         this.description = description;
     }
 
-    public List<String> getImages() {
+    public String getImages() {
         return images;
     }
 
-    public void setImages(List<String> images) {
+    public void setImages(String images) {
         this.images = images;
     }
 

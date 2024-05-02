@@ -3,7 +3,6 @@ package com.parkir.parkir_api.parkings;
 import jakarta.persistence.*;
 
 import java.time.LocalTime;
-import java.util.List;
 
 @Entity // This one is for Hibernate
 @Table(name = "parkings") // This one is for Database
@@ -23,23 +22,23 @@ public class Parking {
     private Integer id;
     private String name;
     private String description;
-    private String images;
+    private String image;
     private String address;
     private String city;
     private Double longitude;
     private Double latitude;
     private LocalTime openingTime;
     private LocalTime closingTime;
-    private Integer pricePerHour;
+    private Double pricePerHour;
 
     public Parking() {
     }
 
-    public Parking(Integer id, String name, String description, String images, String address, String city, Double longitude, Double latitude, LocalTime openingTime, LocalTime closingTime, Integer pricePerHour) {
+    public Parking(Integer id, String name, String description, String image, String address, String city, Double longitude, Double latitude, LocalTime openingTime, LocalTime closingTime, Double pricePerHour) {
         this.id = id;
         this.name = name;
         this.description = description;
-        this.images = images;
+        this.image = image;
         this.address = address;
         this.city = city;
         this.longitude = longitude;
@@ -49,10 +48,10 @@ public class Parking {
         this.pricePerHour = pricePerHour;
     }
 
-    public Parking(String name, String description, String images, String address, String city, Double longitude, Double latitude, LocalTime openingTime, LocalTime closingTime, Integer pricePerHour) {
+    public Parking(String name, String description, String image, String address, String city, Double longitude, Double latitude, LocalTime openingTime, LocalTime closingTime, Double pricePerHour) {
         this.name = name;
         this.description = description;
-        this.images = images;
+        this.image = image;
         this.address = address;
         this.city = city;
         this.longitude = longitude;
@@ -86,12 +85,12 @@ public class Parking {
         this.description = description;
     }
 
-    public String getImages() {
-        return images;
+    public String getImage() {
+        return image;
     }
 
-    public void setImages(String images) {
-        this.images = images;
+    public void setImage(String images) {
+        this.image = images;
     }
 
     public String getAddress() {
@@ -142,11 +141,11 @@ public class Parking {
         this.closingTime = closingTime;
     }
 
-    public Integer getPricePerHour() {
+    public Double getPricePerHour() {
         return pricePerHour;
     }
 
-    public void setPricePerHour(Integer pricePerHour) {
+    public void setPricePerHour(Double pricePerHour) {
         this.pricePerHour = pricePerHour;
     }
 
@@ -156,7 +155,7 @@ public class Parking {
                 "id=" + id +
                 ", name='" + name + '\'' +
                 ", description='" + description + '\'' +
-                ", images=" + images +
+                ", images=" + image +
                 ", address='" + address + '\'' +
                 ", city='" + city + '\'' +
                 ", longitude=" + longitude +

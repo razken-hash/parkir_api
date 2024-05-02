@@ -1,5 +1,7 @@
 package com.parkir.parkir_api.parkings;
 
+import jakarta.transaction.Transactional;
+import org.hibernate.annotations.PartitionKey;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
@@ -36,5 +38,40 @@ public class ParkingService {
             throw new IllegalStateException("Parking not exist");
         }
         parkingRepository.deleteById(parkingId);
+    }
+
+    @Transactional
+    public void updateParking(Integer parkingId, String name, String description, String image, String city, String address, Double longitude, Double latitude, LocalTime openingTime, LocalTime closingTime, Double pricePerHour) throws IllegalStateException {
+        Parking parking = parkingRepository.findById(parkingId).orElseThrow(() -> new IllegalStateException("Parking not exist"));
+        if (name != null) {
+            parking.setName(name);
+        }
+        if (description != null) {
+            parking.setDescription(description);
+        }
+        if (image != null) {
+            parking.setImage(image);
+        }
+        if (city != null) {
+            parking.setCity(city);
+        }
+        if (address != null) {
+            parking.setAddress(address);
+        }
+        if (longitude != null) {
+            parking.setLongitude(longitude);
+        }
+        if (latitude != null) {
+            parking.setLatitude(latitude);
+        }
+        if (openingTime != null) {
+            parking.setOpeningTime(openingTime);
+        }
+        if (closingTime != null) {
+            parking.setClosingTime(closingTime);
+        }
+        if (pricePerHour != null) {
+            parking.setPricePerHour(pricePerHour);
+        }
     }
 }

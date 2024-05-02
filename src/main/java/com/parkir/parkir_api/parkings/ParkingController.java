@@ -23,11 +23,34 @@ public class ParkingController {
         return parkingService.getAllParkings();
     }
 
-
     @PostMapping("/create")
     public void createParking(@RequestBody Parking parking) {
         parkingService.createParking(parking);
     }
+
+    @PutMapping("/update/{parkingId}")
+    public String updateParking(@PathVariable("parkingId") Integer parkingId,
+                                @RequestParam(value = "name", required = false) String name,
+                                @RequestParam(value = "description", required = false) String description,
+                                @RequestParam(value = "image", required = false) String image,
+                                @RequestParam(value = "city", required = false) String city,
+                                @RequestParam(value = "address", required = false) String address,
+                                @RequestParam(value = "longitude", required = false) Double longitude,
+                                @RequestParam(value = "latitude", required = false) Double latitude,
+                                @RequestParam(value = "openingTime", required = false) String openingTime,
+                                @RequestParam(value = "openingTime", required = false) String closingTime,
+                                @RequestParam(value = "pricePerHour", required = false) Double pricePerHour
+    ) {
+        LocalTime oTime = LocalTime.parse(openingTime);
+        LocalTime cTime = LocalTime.parse(closingTime);
+        parkingService.updateParking(parkingId, name, description, image, city, address, longitude, latitude, oTime, cTime, pricePerHour);
+        return "Welcome To PUT";
+    }
+
+//    @PutMapping("/update/${parkingId}")
+//    public void updater(@PathVariable("parkingId") Integer parkingId) {
+//
+//    }
 
     @DeleteMapping(path = "/delete/{parkingId}")
     public void deleteParking(@PathVariable("parkingId") Integer parkingId) {

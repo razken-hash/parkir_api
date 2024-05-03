@@ -1,10 +1,11 @@
-package com.parkir.parkir_api.parkings;
+package com.parkir.parkir_api.parkings.controllers;
 
+import com.parkir.parkir_api.parkings.models.Parking;
+import com.parkir.parkir_api.parkings.services.ParkingService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.time.LocalTime;
-import java.util.Arrays;
 import java.util.List;
 
 @RestController
@@ -21,6 +22,11 @@ public class ParkingController {
     @GetMapping
     public List<Parking> getAllParkings() {
         return parkingService.getAllParkings();
+    }
+
+    @GetMapping("/{parkingId}")
+    public Parking getParkingById(@PathVariable("parkingId") Integer parkingId) {
+        return parkingService.getParkingById(parkingId).get();
     }
 
     @PostMapping("/create")
@@ -46,11 +52,6 @@ public class ParkingController {
         parkingService.updateParking(parkingId, name, description, image, city, address, longitude, latitude, oTime, cTime, pricePerHour);
         return "Welcome To PUT";
     }
-
-//    @PutMapping("/update/${parkingId}")
-//    public void updater(@PathVariable("parkingId") Integer parkingId) {
-//
-//    }
 
     @DeleteMapping(path = "/delete/{parkingId}")
     public void deleteParking(@PathVariable("parkingId") Integer parkingId) {

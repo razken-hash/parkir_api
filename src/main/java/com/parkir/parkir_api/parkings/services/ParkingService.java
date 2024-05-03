@@ -1,9 +1,11 @@
-package com.parkir.parkir_api.parkings;
+package com.parkir.parkir_api.parkings.services;
 
+import com.parkir.parkir_api.ParkirApiApplication;
+import com.parkir.parkir_api.parkings.models.Parking;
+import com.parkir.parkir_api.parkings.repositories.FloorRepository;
+import com.parkir.parkir_api.parkings.repositories.ParkingRepository;
 import jakarta.transaction.Transactional;
-import org.hibernate.annotations.PartitionKey;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalTime;
@@ -12,6 +14,7 @@ import java.util.Optional;
 
 @Service
 public class ParkingService {
+
 
     private final ParkingRepository parkingRepository;
 
@@ -29,6 +32,12 @@ public class ParkingService {
         if (optionalParking.isPresent()) {
             throw new IllegalStateException("Parking already exists");
         }
+        Parking newParking = parking;
+        parking.getFloors().forEach(
+                floor -> {
+                    floor.setParking(newParking);
+                }
+        );
         parkingRepository.save(parking);
     }
 
@@ -73,5 +82,9 @@ public class ParkingService {
         if (pricePerHour != null) {
             parking.setPricePerHour(pricePerHour);
         }
+    }
+
+    public Optional<Parking> getParkingById(Integer parkingId) {
+        return parkingRepository.findById(parkingId);
     }
 }

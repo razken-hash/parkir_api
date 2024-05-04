@@ -1,5 +1,6 @@
 package com.parkir.parkir_api.parkings.controllers;
 
+import com.parkir.parkir_api.ParkirConsts;
 import com.parkir.parkir_api.parkings.services.FloorService;
 import com.parkir.parkir_api.parkings.entities.Floor;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -8,7 +9,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/api/v1/parkings/floors")
+@RequestMapping(ParkirConsts.baseUrl + "/parkings/floors")
 public class FloorController {
 
     private final FloorService floorService;

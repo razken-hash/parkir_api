@@ -1,5 +1,6 @@
 package com.parkir.parkir_api.parkings.controllers;
 
+import com.parkir.parkir_api.ParkirConsts;
 import com.parkir.parkir_api.parkings.entities.Parking;
 import com.parkir.parkir_api.parkings.services.ParkingService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,7 +10,7 @@ import java.time.LocalTime;
 import java.util.List;
 
 @RestController
-@RequestMapping("/api/v1/parkings")
+@RequestMapping(ParkirConsts.baseUrl + "/parkings")
 public class ParkingController {
 
     private final ParkingService parkingService;

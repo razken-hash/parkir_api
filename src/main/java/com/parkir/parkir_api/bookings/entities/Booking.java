@@ -2,8 +2,9 @@ package com.parkir.parkir_api.bookings.entities;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.parkir.parkir_api.parkings.entities.ParkingSpot;
-import com.parkir.parkir_api.payments.entities.BookingPayment;
-import com.parkir.parkir_api.users.entities.User;
+import com.parkir.parkir_api.booking_payments.BookingPayment;
+import com.parkir.parkir_api.users.User;
+import com.sun.source.tree.LambdaExpressionTree;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -28,6 +29,7 @@ public class Booking {
     LocalTime beginTime;
     LocalTime endTime;
     Duration duration;
+    BookingStatus status;
 
     @ManyToOne
     @JoinColumn(name = "user_id")
@@ -40,7 +42,6 @@ public class Booking {
 
     @OneToOne
     @JoinColumn(name = "booking_payment_id")
-    @JsonIgnoreProperties({"user"})
     private BookingPayment bookingPayment;
 
     public Booking(LocalDate date, LocalTime beginTime, LocalTime endTime, Duration duration, User user, ParkingSpot parkingSpot) {
@@ -51,4 +52,19 @@ public class Booking {
         this.user = user;
         this.parkingSpot = parkingSpot;
     }
+
+    public BookingStatus getStatus() {
+        if (bookingPayment == null) {
+            return BookingStatus.Canceled;
+        }
+        if (LocalTime.now().isAfter(endTime)) {
+            return BookingStatus.Completed;
+        }
+        if (LocalTime.now().isAfter(beginTime) && LocalTime.now().isAfter(endTime)) {
+            return BookingStatus.OnGoing;
+        }
+        return BookingStatus.Paid;
+    }
 }
+
+

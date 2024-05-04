@@ -1,10 +1,7 @@
-package com.parkir.parkir_api.users.controllers;
+package com.parkir.parkir_api.users;
 
 import com.parkir.parkir_api.ParkirConsts;
-import com.parkir.parkir_api.users.entities.User;
 import org.springframework.web.bind.annotation.*;
-
-import java.util.Objects;
 
 @RestController
 @RequestMapping(ParkirConsts.baseUrl + "/auth")

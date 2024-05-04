@@ -1,7 +1,7 @@
-package com.parkir.parkir_api.users.entities;
+package com.parkir.parkir_api.users;
 
 import com.parkir.parkir_api.bookings.entities.Booking;
-import com.parkir.parkir_api.payments.entities.BookingPayment;
+import com.parkir.parkir_api.booking_payments.BookingPayment;
 import jakarta.persistence.*;
 import lombok.*;
 

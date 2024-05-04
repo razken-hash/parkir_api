@@ -1,7 +1,6 @@
 package com.parkir.parkir_api.parkings.entities;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.parkir.parkir_api.users.entities.User;
 import jakarta.persistence.*;
 import lombok.*;
 

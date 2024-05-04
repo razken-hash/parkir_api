@@ -1,9 +1,7 @@
-package com.parkir.parkir_api.payments.entities;
+package com.parkir.parkir_api.booking_payments;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-//import com.parkir.parkir_api.users.entities.User;
 import com.parkir.parkir_api.bookings.entities.Booking;
-import com.parkir.parkir_api.users.entities.User;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -30,11 +28,6 @@ public class BookingPayment {
     private LocalDate date;
     private LocalTime time;
 
-    @ManyToOne
-    @JoinColumn(name = "user_id")
-    @JsonIgnoreProperties({"bookings", "payments"})
-    private User user;
-
     @OneToOne
     @JoinColumn(name = "booking_id")
     @JsonIgnoreProperties({"payment", "user"})
@@ -47,7 +40,6 @@ public class BookingPayment {
             Double amount,
             LocalDate date,
             LocalTime time,
-            User user,
             Booking booking
     ) {
         this.cardNumber = cardNumber;
@@ -56,7 +48,6 @@ public class BookingPayment {
         this.amount = amount;
         this.date = date;
         this.time = time;
-        this.user = user;
         this.booking = booking;
     }
 }

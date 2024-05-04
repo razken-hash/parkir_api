@@ -1,6 +1,5 @@
-package com.parkir.parkir_api.parkings.models;
+package com.parkir.parkir_api.parkings.entities;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
 import lombok.*;

@@ -1,8 +1,6 @@
 package com.parkir.parkir_api.parkings.services;
 
-import com.parkir.parkir_api.ParkirApiApplication;
-import com.parkir.parkir_api.parkings.models.Parking;
-import com.parkir.parkir_api.parkings.repositories.FloorRepository;
+import com.parkir.parkir_api.parkings.entities.Parking;
 import com.parkir.parkir_api.parkings.repositories.ParkingRepository;
 import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;

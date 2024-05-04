@@ -1,4 +1,4 @@
-package com.parkir.parkir_api.parkings.models;
+package com.parkir.parkir_api.parkings.entities;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
@@ -26,7 +26,7 @@ public class Place {
 
     @ManyToOne
     @JoinColumn(name = "floor_id")
-    @JsonIgnoreProperties({"places", "parking"})
+    @JsonIgnoreProperties({"places"})
     private Floor floor;
 
     private Integer number;

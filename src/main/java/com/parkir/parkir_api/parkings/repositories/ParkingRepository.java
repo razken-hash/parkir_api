@@ -1,6 +1,6 @@
 package com.parkir.parkir_api.parkings.repositories;
 
-import com.parkir.parkir_api.parkings.models.Parking;
+import com.parkir.parkir_api.parkings.entities.Parking;
 import org.springframework.data.jpa.repository.JpaRepository;
 import java.util.Optional;
 

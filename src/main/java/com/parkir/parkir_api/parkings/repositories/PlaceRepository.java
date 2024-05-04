@@ -1,7 +1,7 @@
 package com.parkir.parkir_api.parkings.repositories;
 
-import com.parkir.parkir_api.parkings.models.Floor;
-import com.parkir.parkir_api.parkings.models.Place;
+import com.parkir.parkir_api.parkings.entities.Floor;
+import com.parkir.parkir_api.parkings.entities.Place;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

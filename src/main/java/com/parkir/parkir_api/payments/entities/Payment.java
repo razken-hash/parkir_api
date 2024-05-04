@@ -39,4 +39,24 @@ public class Payment {
     @JoinColumn(name = "booking_id")
     @JsonIgnoreProperties({"payment", "user"})
     private Booking booking;
+
+    public Payment(
+            String cardNumber,
+            String cardCVC,
+            String cardDate,
+            Double amount,
+            LocalDate date,
+            LocalTime time,
+            User user,
+            Booking booking
+    ) {
+        this.cardNumber = cardNumber;
+        this.cardCVC = cardCVC;
+        this.cardDate = cardDate;
+        this.amount = amount;
+        this.date = date;
+        this.time = time;
+        this.user = user;
+        this.booking = booking;
+    }
 }

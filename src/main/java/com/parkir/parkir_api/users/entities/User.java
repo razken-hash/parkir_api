@@ -32,4 +32,16 @@ public class User {
 
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
     private List<Payment> payments;
+
+    public User(String email, String hashedPassword) {
+        this.email = email;
+        this.hashedPassword = email;
+    }
+
+    public User(String email, String phoneNumber, String name, String gender) {
+        this.email = email;
+        this.phoneNumber = phoneNumber;
+        this.name = name;
+        this.gender = gender;
+    }
 }

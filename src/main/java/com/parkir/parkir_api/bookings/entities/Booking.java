@@ -44,4 +44,13 @@ public class Booking {
     @JoinColumn(name = "payment_id")
     @JsonIgnoreProperties({"user"})
     private Payment payment;
+
+    public Booking(LocalDate date, LocalTime beginTime, LocalTime endTime, Duration duration, User user, Place place) {
+        this.date = date;
+        this.beginTime = beginTime;
+        this.endTime = endTime;
+        this.duration = duration;
+        this.user = user;
+        this.place = place;
+    }
 }

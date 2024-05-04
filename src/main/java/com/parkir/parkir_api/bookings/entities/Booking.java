@@ -1,10 +1,8 @@
 package com.parkir.parkir_api.bookings.entities;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.parkir.parkir_api.parkings.entities.Place;
-//import com.parkir.parkir_api.payments.entities.Payment;
-//import com.parkir.parkir_api.users.entities.User;
-import com.parkir.parkir_api.payments.entities.Payment;
+import com.parkir.parkir_api.parkings.entities.ParkingSpot;
+import com.parkir.parkir_api.payments.entities.BookingPayment;
 import com.parkir.parkir_api.users.entities.User;
 import jakarta.persistence.*;
 import lombok.*;
@@ -37,20 +35,20 @@ public class Booking {
     private User user;
 
     @ManyToOne
-    @JoinColumn(name = "place_id")
-    private Place place;
+    @JoinColumn(name = "parking_spot_id")
+    private ParkingSpot parkingSpot;
 
     @OneToOne
-    @JoinColumn(name = "payment_id")
+    @JoinColumn(name = "booking_payment_id")
     @JsonIgnoreProperties({"user"})
-    private Payment payment;
+    private BookingPayment bookingPayment;
 
-    public Booking(LocalDate date, LocalTime beginTime, LocalTime endTime, Duration duration, User user, Place place) {
+    public Booking(LocalDate date, LocalTime beginTime, LocalTime endTime, Duration duration, User user, ParkingSpot parkingSpot) {
         this.date = date;
         this.beginTime = beginTime;
         this.endTime = endTime;
         this.duration = duration;
         this.user = user;
-        this.place = place;
+        this.parkingSpot = parkingSpot;
     }
 }

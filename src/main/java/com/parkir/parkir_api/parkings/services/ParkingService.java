@@ -12,8 +12,6 @@ import java.util.Optional;
 
 @Service
 public class ParkingService {
-
-
     private final ParkingRepository parkingRepository;
 
     @Autowired
@@ -25,18 +23,12 @@ public class ParkingService {
         return parkingRepository.findAll();
     }
 
-    public void createParking(Parking parking) {
+    public Parking createParking(Parking parking) {
         Optional<Parking> optionalParking = parkingRepository.findParkingByName(parking.getName());
         if (optionalParking.isPresent()) {
             throw new IllegalStateException("Parking already exists");
         }
-        Parking newParking = parking;
-        parking.getFloors().forEach(
-                floor -> {
-                    floor.setParking(newParking);
-                }
-        );
-        parkingRepository.save(parking);
+        return parkingRepository.save(parking);
     }
 
     public void deleteParking(Integer parkingId) {
@@ -48,7 +40,7 @@ public class ParkingService {
     }
 
     @Transactional
-    public void updateParking(Integer parkingId, String name, String description, String image, String city, String address, Double longitude, Double latitude, LocalTime openingTime, LocalTime closingTime, Double pricePerHour) throws IllegalStateException {
+    public Parking updateParking(Integer parkingId, String name, String description, String image, String city, String address, Double longitude, Double latitude, LocalTime openingTime, LocalTime closingTime, Double pricePerHour) throws IllegalStateException {
         Parking parking = parkingRepository.findById(parkingId).orElseThrow(() -> new IllegalStateException("Parking not exist"));
         if (name != null) {
             parking.setName(name);
@@ -80,6 +72,7 @@ public class ParkingService {
         if (pricePerHour != null) {
             parking.setPricePerHour(pricePerHour);
         }
+        return parking;
     }
 
     public Optional<Parking> getParkingById(Integer parkingId) {

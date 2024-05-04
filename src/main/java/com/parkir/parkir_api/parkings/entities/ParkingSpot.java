@@ -5,28 +5,28 @@ import jakarta.persistence.*;
 import lombok.*;
 
 @Entity
-@Table(name = "places")
+@Table(name = "parking_spot")
 @Getter
 @Setter
 @ToString
 @NoArgsConstructor
 @AllArgsConstructor
-public class Place {
+public class ParkingSpot {
     @Id
     @SequenceGenerator(
-            name = "place_sequence",
-            sequenceName = "place_sequence",
+            name = "parking_spot_sequence",
+            sequenceName = "parking_spot_sequence",
             allocationSize = 1
     )
     @GeneratedValue(
             strategy = GenerationType.SEQUENCE,
-            generator = "place_sequence"
+            generator = "parking_spot_sequence"
     )
     private Integer id;
 
     @ManyToOne
     @JoinColumn(name = "floor_id")
-    @JsonIgnoreProperties({"places"})
+    @JsonIgnoreProperties({"parkingSpots"})
     private Floor floor;
 
     private Integer number;
@@ -34,11 +34,11 @@ public class Place {
     @Transient
     private Boolean status;
 
-    public Place(Integer number) {
+    public ParkingSpot(Integer number) {
         this.number = number;
     }
 
-    public Place(Integer number, Floor floor) {
+    public ParkingSpot(Integer number, Floor floor) {
         this.number = number;
         this.floor = floor;
     }

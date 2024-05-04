@@ -4,6 +4,7 @@ import com.parkir.parkir_api.ParkirConsts;
 import com.parkir.parkir_api.parkings.entities.Parking;
 import com.parkir.parkir_api.parkings.services.ParkingService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.time.LocalTime;
@@ -31,12 +32,12 @@ public class ParkingController {
     }
 
     @PostMapping("/create")
-    public void createParking(@RequestBody Parking parking) {
-        parkingService.createParking(parking);
+    public Parking createParking(@RequestBody Parking parking) {
+        return parkingService.createParking(parking);
     }
 
     @PutMapping("/update/{parkingId}")
-    public String updateParking(@PathVariable("parkingId") Integer parkingId,
+    public Parking updateParking(@PathVariable("parkingId") Integer parkingId,
                                 @RequestParam(value = "name", required = false) String name,
                                 @RequestParam(value = "description", required = false) String description,
                                 @RequestParam(value = "image", required = false) String image,
@@ -50,8 +51,7 @@ public class ParkingController {
     ) {
         LocalTime oTime = LocalTime.parse(openingTime);
         LocalTime cTime = LocalTime.parse(closingTime);
-        parkingService.updateParking(parkingId, name, description, image, city, address, longitude, latitude, oTime, cTime, pricePerHour);
-        return "Welcome To PUT";
+        return parkingService.updateParking(parkingId, name, description, image, city, address, longitude, latitude, oTime, cTime, pricePerHour);
     }
 
     @DeleteMapping(path = "/delete/{parkingId}")

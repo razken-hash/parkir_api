@@ -1,6 +1,7 @@
 package com.parkir.parkir_api.parkings.controllers;
 
 import com.parkir.parkir_api.ParkirConsts;
+import com.parkir.parkir_api.parkings.entities.Parking;
 import com.parkir.parkir_api.parkings.services.FloorService;
 import com.parkir.parkir_api.parkings.entities.Floor;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,17 +26,16 @@ public class FloorController {
     }
 
     @PostMapping("/create")
-    public void createFloor(@RequestBody Floor floor) {
-        floorService.createFloor(floor);
+    public Floor createFloor(@RequestBody Floor floor) {
+        return floorService.createFloor(floor);
     }
 
     @PutMapping("/update/{floorId}")
-    public String updateFloor(@PathVariable("floorId") Integer floorId,
-                              @RequestParam(value = "name", required = false) String name,
-                              @RequestParam(value = "description", required = false) String description
+    public Floor updateFloor(@PathVariable("floorId") Integer floorId,
+                             @RequestParam(value = "name", required = false) String name,
+                             @RequestParam(value = "description", required = false) String description
     ) {
-        floorService.updateParking(floorId, name, description);
-        return "Welcome To PUT";
+        return floorService.updateParking(floorId, name, description);
     }
 
     @DeleteMapping(path = "/delete/{floorId}")

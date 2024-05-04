@@ -8,6 +8,5 @@ import java.util.Optional;
 
 @Repository
 public interface FloorRepository extends JpaRepository<Floor, Integer> {
-
     public  Optional<Floor> findFloorByParkingAndNumber(Parking parking, Integer floorId);
 }

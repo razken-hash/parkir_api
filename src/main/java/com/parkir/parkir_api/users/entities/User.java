@@ -1,8 +1,7 @@
 package com.parkir.parkir_api.users.entities;
 
 import com.parkir.parkir_api.bookings.entities.Booking;
-import com.parkir.parkir_api.parkings.entities.Parking;
-import com.parkir.parkir_api.payments.entities.Payment;
+import com.parkir.parkir_api.payments.entities.BookingPayment;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -31,11 +30,11 @@ public class User {
     private List<Booking> bookings;
 
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
-    private List<Payment> payments;
+    private List<BookingPayment> bookingPayments;
 
     public User(String email, String hashedPassword) {
         this.email = email;
-        this.hashedPassword = email;
+        this.hashedPassword = hashedPassword;
     }
 
     public User(String email, String phoneNumber, String name, String gender) {

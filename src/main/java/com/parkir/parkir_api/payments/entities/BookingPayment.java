@@ -11,13 +11,13 @@ import java.time.LocalDate;
 import java.time.LocalTime;
 
 @Entity
-@Table(name = "payments")
+@Table(name = "booking_payments")
 @Getter
 @Setter
 @ToString
 @NoArgsConstructor
 @AllArgsConstructor
-public class Payment {
+public class BookingPayment {
     @Id
     @SequenceGenerator(name = "payment_sequence", sequenceName = "payment_sequence", allocationSize = 1)
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "payment_sequence")
@@ -40,7 +40,7 @@ public class Payment {
     @JsonIgnoreProperties({"payment", "user"})
     private Booking booking;
 
-    public Payment(
+    public BookingPayment(
             String cardNumber,
             String cardCVC,
             String cardDate,

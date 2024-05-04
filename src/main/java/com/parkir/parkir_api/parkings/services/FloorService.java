@@ -23,30 +23,15 @@ public class FloorService {
         return floorRepository.findAll();
     }
 
-    public void createFloor(Floor floor) {
+    public Floor createFloor(Floor floor) {
         Optional<Floor> floorOptional = floorRepository.findFloorByParkingAndNumber(floor.getParking(), floor.getNumber());
         if (floorOptional.isPresent()) {
             throw new IllegalStateException("Floor already exists");
         }
-        Floor newFloor = floor;
-        floor.getPlaces().forEach(
-                place -> {
-                    place.setFloor(newFloor);
-                }
-        );
-        floorRepository.save(floor);
+        return floorRepository.save(floor);
     }
-
-    public void deleteFloor(Integer floorId) {
-        boolean exists = floorRepository.existsById(floorId);
-        if (!exists) {
-            throw new IllegalStateException("Floor not exist");
-        }
-        floorRepository.deleteById(floorId);
-    }
-
     @Transactional
-    public void updateParking(Integer floorId, String name, String description) throws IllegalStateException {
+    public Floor updateParking(Integer floorId, String name, String description) throws IllegalStateException {
         Floor floor = floorRepository.findById(floorId).orElseThrow(() -> new IllegalStateException("Floor not exist"));
         if (name != null) {
             floor.setName(name);
@@ -54,5 +39,13 @@ public class FloorService {
         if (description != null) {
             floor.setDescription(description);
         }
+        return floor;
+    }
+    public void deleteFloor(Integer floorId) {
+        boolean exists = floorRepository.existsById(floorId);
+        if (!exists) {
+            throw new IllegalStateException("Floor not exist");
+        }
+        floorRepository.deleteById(floorId);
     }
 }

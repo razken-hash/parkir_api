@@ -2,7 +2,6 @@ package com.parkir.parkir_api.parkings.config;
 
 import com.parkir.parkir_api.parkings.entities.Floor;
 import com.parkir.parkir_api.parkings.entities.Parking;
-//import com.parkir.parkir_api.parkings.models.Floor;
 import com.parkir.parkir_api.parkings.entities.ParkingSpot;
 import com.parkir.parkir_api.parkings.services.FloorService;
 import com.parkir.parkir_api.parkings.services.ParkingService;
@@ -13,7 +12,6 @@ import org.springframework.context.annotation.Configuration;
 
 import java.time.LocalTime;
 import java.util.List;
-import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 @Configuration

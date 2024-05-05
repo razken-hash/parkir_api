@@ -1,9 +1,8 @@
 package com.parkir.parkir_api.parkings.controllers;
 
 import com.parkir.parkir_api.ParkirConsts;
-import com.parkir.parkir_api.parkings.entities.Parking;
-import com.parkir.parkir_api.parkings.services.FloorService;
 import com.parkir.parkir_api.parkings.entities.Floor;
+import com.parkir.parkir_api.parkings.services.FloorService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 

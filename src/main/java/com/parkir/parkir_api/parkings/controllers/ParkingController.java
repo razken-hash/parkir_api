@@ -4,7 +4,6 @@ import com.parkir.parkir_api.ParkirConsts;
 import com.parkir.parkir_api.parkings.entities.Parking;
 import com.parkir.parkir_api.parkings.services.ParkingService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.time.LocalTime;

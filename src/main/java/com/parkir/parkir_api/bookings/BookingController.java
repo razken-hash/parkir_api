@@ -2,12 +2,10 @@ package com.parkir.parkir_api.bookings;
 
 import com.parkir.parkir_api.bookings.entities.Booking;
 import com.parkir.parkir_api.bookings.entities.BookingStatus;
-import com.parkir.parkir_api.parkings.services.ParkingService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-import java.util.stream.Collectors;
 
 @RestController
 @RequestMapping("/bookings")

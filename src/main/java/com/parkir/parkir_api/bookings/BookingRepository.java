@@ -1,11 +1,9 @@
 package com.parkir.parkir_api.bookings;
 
 import com.parkir.parkir_api.bookings.entities.Booking;
-import com.parkir.parkir_api.parkings.entities.Parking;
 import com.parkir.parkir_api.parkings.entities.ParkingSpot;
 import com.parkir.parkir_api.users.User;
 import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
 import java.time.LocalDate;

@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping(ParkirConsts.baseUrl + "/parkings/floors/parkingSpots")
+@RequestMapping(ParkirConsts.baseUrl + "/parkings/floors/parkingspots")
 public class ParkingSpotController {
 
     private final ParkingSpotService parkingSpotService;

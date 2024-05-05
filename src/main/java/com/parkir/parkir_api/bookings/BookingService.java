@@ -2,19 +2,15 @@ package com.parkir.parkir_api.bookings;
 
 import com.parkir.parkir_api.bookings.entities.Booking;
 import com.parkir.parkir_api.bookings.entities.BookingStatus;
-import com.parkir.parkir_api.parkings.entities.Parking;
 import com.parkir.parkir_api.parkings.entities.ParkingSpot;
-import com.parkir.parkir_api.parkings.repositories.FloorRepository;
 import com.parkir.parkir_api.users.User;
 import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.awt.print.Book;
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.List;
-import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Service

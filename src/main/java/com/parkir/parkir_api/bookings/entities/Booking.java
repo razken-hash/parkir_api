@@ -1,10 +1,9 @@
 package com.parkir.parkir_api.bookings.entities;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.parkir.parkir_api.parkings.entities.ParkingSpot;
 import com.parkir.parkir_api.booking_payments.BookingPayment;
+import com.parkir.parkir_api.parkings.entities.ParkingSpot;
 import com.parkir.parkir_api.users.User;
-import com.sun.source.tree.LambdaExpressionTree;
 import jakarta.persistence.*;
 import lombok.*;
 

@@ -25,7 +25,7 @@ public class BookingController {
         return bookingService.getAllBookings(userId);
     }
 
-    @GetMapping("/{userId}")
+    @GetMapping("/status/{userId}")
     public List<Booking> getBookingsByStatus(@PathVariable("userId") Integer userId, @RequestParam("status") BookingStatus bookingStatus) {
         return bookingService.getBookingsByStatus(userId, bookingStatus);
     }

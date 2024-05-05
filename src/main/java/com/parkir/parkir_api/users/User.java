@@ -29,9 +29,6 @@ public class User {
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
     private List<Booking> bookings;
 
-    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
-    private List<BookingPayment> bookingPayments;
-
     public User(String email, String hashedPassword) {
         this.email = email;
         this.hashedPassword = hashedPassword;

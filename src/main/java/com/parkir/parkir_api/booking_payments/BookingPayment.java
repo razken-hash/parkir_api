@@ -30,7 +30,7 @@ public class BookingPayment {
 
     @OneToOne
     @JoinColumn(name = "booking_id")
-    @JsonIgnoreProperties({"payment", "user"})
+    @JsonIgnoreProperties({"bookingPayment", "user"})
     private Booking booking;
 
     public BookingPayment(

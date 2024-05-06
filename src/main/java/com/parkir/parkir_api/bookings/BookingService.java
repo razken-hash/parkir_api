@@ -4,7 +4,10 @@ import com.parkir.parkir_api.bookings.entities.Booking;
 import com.parkir.parkir_api.bookings.entities.BookingStatus;
 import com.parkir.parkir_api.parkings.entities.ParkingSpot;
 import com.parkir.parkir_api.users.User;
+import com.parkir.parkir_api.users.UserRepository;
+import jakarta.annotation.Nullable;
 import jakarta.transaction.Transactional;
+import lombok.NonNull;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -16,15 +19,17 @@ import java.util.stream.Collectors;
 @Service
 public class BookingService {
     private final BookingRepository bookingRepository;
+    private final UserRepository userRepository;
 
     @Autowired
-    public BookingService(BookingRepository bookingRepository) {
+    public BookingService(BookingRepository bookingRepository, UserRepository userRepository) {
         this.bookingRepository = bookingRepository;
+        this.userRepository = userRepository;
     }
 
     public List<Booking> getAllBookings(Integer userId) {
-        User user = new User();
-        return bookingRepository.findBookingsByUser(user).get();
+        User user = userRepository.findById(userId).orElseThrow(() -> new IllegalStateException("User Not Exist"));
+        return bookingRepository.findBookingsByUser(user).orElseThrow(() -> new IllegalStateException("Error"));
     }
 
     public List<Booking> getBookingsByStatus(Integer userId, BookingStatus bookingStatus) {

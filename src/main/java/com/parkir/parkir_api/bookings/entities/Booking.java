@@ -1,6 +1,7 @@
 package com.parkir.parkir_api.bookings.entities;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import com.parkir.parkir_api.booking_payments.BookingPayment;
 import com.parkir.parkir_api.parkings.entities.ParkingSpot;
 import com.parkir.parkir_api.users.User;
@@ -28,7 +29,9 @@ public class Booking {
     LocalTime beginTime;
     LocalTime endTime;
     Duration duration;
-    BookingStatus status;
+
+//    @Transient
+//    BookingStatus status;
 
     @ManyToOne
     @JoinColumn(name = "user_id")
@@ -52,6 +55,7 @@ public class Booking {
         this.parkingSpot = parkingSpot;
     }
 
+    @JsonProperty("status")
     public BookingStatus getStatus() {
         if (bookingPayment == null) {
             return BookingStatus.Canceled;

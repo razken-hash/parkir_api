@@ -1,5 +1,6 @@
 package com.parkir.parkir_api.bookings;
 
+import com.parkir.parkir_api.ParkirConsts;
 import com.parkir.parkir_api.bookings.entities.Booking;
 import com.parkir.parkir_api.bookings.entities.BookingStatus;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -8,7 +9,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/bookings")
+@RequestMapping(ParkirConsts.baseUrl + "/bookings")
 public class BookingController {
 
     private final BookingService bookingService;

@@ -1,25 +1,32 @@
-package com.parkir.parkir_api.parkings.config;
+package com.parkir.parkir_api.config;
 
+import com.parkir.parkir_api.bookings.BookingService;
+import com.parkir.parkir_api.bookings.entities.Booking;
 import com.parkir.parkir_api.parkings.entities.Floor;
 import com.parkir.parkir_api.parkings.entities.Parking;
 import com.parkir.parkir_api.parkings.entities.ParkingSpot;
 import com.parkir.parkir_api.parkings.services.FloorService;
 import com.parkir.parkir_api.parkings.services.ParkingService;
 import com.parkir.parkir_api.parkings.services.ParkingSpotService;
+import com.parkir.parkir_api.users.User;
+import com.parkir.parkir_api.users.UserService;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
+import java.awt.print.Book;
+import java.time.Duration;
+import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.List;
 import java.util.stream.Stream;
 
 @Configuration
-public class ParkingConfig {
+public class Config {
 
 
     @Bean
-    CommandLineRunner commandLineRunner(ParkingService parkingService, FloorService floorService, ParkingSpotService parkingSpotService) {
+    CommandLineRunner commandLineRunner(ParkingService parkingService, FloorService floorService, ParkingSpotService parkingSpotService, UserService userService, BookingService bookingService) {
         return args -> {
             List<Parking> parkings = Stream.of(
                     new Parking("Central Parking", "Conveniently located in the city center.",
@@ -74,6 +81,17 @@ public class ParkingConfig {
             );
 
             parkingSpots.forEach(parkingSpotService::createParkingSpot);
+
+            List<User> users = Stream.of(
+                    new User("ka_kenniche@esi.dz", "12345678"),
+                    new User("kr_baaguigui@esi.dz", "12345678")
+            ).map(userService::registerUser).toList();
+
+            List<Booking> bookings = Stream.of(
+                 new Booking(LocalDate.of(2020, 12, 24), LocalTime.of(9, 0, 0), LocalTime.of(22, 0, 0), Duration.ofHours(11), users.get(0), parkingSpots.get(1)),
+                 new Booking(LocalDate.of(2021, 12, 24), LocalTime.of(9, 0, 0), LocalTime.of(22, 0, 0), Duration.ofHours(11), users.get(0), parkingSpots.get(1)),
+                 new Booking(LocalDate.of(2022, 12, 24), LocalTime.of(9, 0, 0), LocalTime.of(22, 0, 0), Duration.ofHours(11), users.get(1), parkingSpots.get(2))
+            ).map(bookingService::bookParking).toList();
         };
     }
 }

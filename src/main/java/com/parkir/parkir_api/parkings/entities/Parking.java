@@ -49,4 +49,6 @@ public class Parking {
         this.closingTime = closingTime;
         this.pricePerHour = pricePerHour;
     }
+
+
 }

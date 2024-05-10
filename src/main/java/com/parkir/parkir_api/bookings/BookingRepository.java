@@ -16,6 +16,7 @@ public interface BookingRepository extends JpaRepository<Booking, Integer> {
 
     public Optional<List<Booking>> findBookingsByUser(User user);
 
+    public Optional<Booking> findBookingsById(Integer bookingId);
+
     public Boolean existsByParkingSpotAndBeginTimeAndEndTimeAndDate(ParkingSpot parkingSpot, LocalTime beginTime, LocalTime endTime, LocalDate date);
-    public Optional<Booking> findBookingByUserAndParkingSpotAndDateAndBeginTime(User user, ParkingSpot parkingSpot, LocalDate date, LocalTime time);
 }

@@ -40,7 +40,7 @@ public class ParkingService {
     }
 
     @Transactional
-    public Parking updateParking(Integer parkingId, String name, String description, String image, String city, String address, Double longitude, Double latitude, LocalTime openingTime, LocalTime closingTime, Double pricePerHour) throws IllegalStateException {
+    public Parking updateParking(Integer parkingId, String name, String description, String image, /* String city, String address, Double longitude, Double latitude,*/ LocalTime openingTime, LocalTime closingTime, Double pricePerHour) throws IllegalStateException {
         Parking parking = parkingRepository.findById(parkingId).orElseThrow(() -> new IllegalStateException("Parking not exist"));
         if (name != null) {
             parking.setName(name);
@@ -50,18 +50,6 @@ public class ParkingService {
         }
         if (image != null) {
             parking.setImage(image);
-        }
-        if (city != null) {
-            parking.setCity(city);
-        }
-        if (address != null) {
-            parking.setAddress(address);
-        }
-        if (longitude != null) {
-            parking.setLongitude(longitude);
-        }
-        if (latitude != null) {
-            parking.setLatitude(latitude);
         }
         if (openingTime != null) {
             parking.setOpeningTime(openingTime);

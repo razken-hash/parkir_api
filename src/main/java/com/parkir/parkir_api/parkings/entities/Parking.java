@@ -25,10 +25,11 @@ public class Parking {
     private String name;
     private String description;
     private String image;
-    private String address;
-    private String city;
-    private Double longitude;
-    private Double latitude;
+
+    @OneToOne
+    @JoinColumn(name = "address_id")
+    private Address address;
+
     private LocalTime openingTime;
     private LocalTime closingTime;
     private Double pricePerHour;
@@ -37,14 +38,11 @@ public class Parking {
     @JsonIgnore
     private List<Floor> floors = new ArrayList<>();
 
-    public Parking(String name, String description, String image, String address, String city, Double longitude, Double latitude, LocalTime openingTime, LocalTime closingTime, Double pricePerHour) {
+    public Parking(String name, String description, String image, Address address, LocalTime openingTime, LocalTime closingTime, Double pricePerHour) {
         this.name = name;
         this.description = description;
         this.image = image;
         this.address = address;
-        this.city = city;
-        this.longitude = longitude;
-        this.latitude = latitude;
         this.openingTime = openingTime;
         this.closingTime = closingTime;
         this.pricePerHour = pricePerHour;

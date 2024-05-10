@@ -24,6 +24,11 @@ public class BookingController {
         return bookingService.getAllBookings(userId);
     }
 
+    @GetMapping("/id={bookingId}")
+    public Booking getBookingById(@PathVariable("bookingId") Integer bookingId) {
+        return bookingService.getBookingById(bookingId);
+    }
+
     @GetMapping("/status/{userId}")
     public List<Booking> getBookingsByStatus(@PathVariable("userId") Integer userId, @RequestParam("status") BookingStatus bookingStatus) {
         return bookingService.getBookingsByStatus(userId, bookingStatus);

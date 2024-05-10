@@ -37,20 +37,16 @@ public class ParkingController {
 
     @PutMapping("/update/{parkingId}")
     public Parking updateParking(@PathVariable("parkingId") Integer parkingId,
-                                @RequestParam(value = "name", required = false) String name,
-                                @RequestParam(value = "description", required = false) String description,
-                                @RequestParam(value = "image", required = false) String image,
-                                @RequestParam(value = "city", required = false) String city,
-                                @RequestParam(value = "address", required = false) String address,
-                                @RequestParam(value = "longitude", required = false) Double longitude,
-                                @RequestParam(value = "latitude", required = false) Double latitude,
-                                @RequestParam(value = "openingTime", required = false) String openingTime,
-                                @RequestParam(value = "openingTime", required = false) String closingTime,
-                                @RequestParam(value = "pricePerHour", required = false) Double pricePerHour
+                                 @RequestParam(value = "name", required = false) String name,
+                                 @RequestParam(value = "description", required = false) String description,
+                                 @RequestParam(value = "image", required = false) String image,
+                                 @RequestParam(value = "openingTime", required = false) String openingTime,
+                                 @RequestParam(value = "openingTime", required = false) String closingTime,
+                                 @RequestParam(value = "pricePerHour", required = false) Double pricePerHour
     ) {
         LocalTime oTime = LocalTime.parse(openingTime);
         LocalTime cTime = LocalTime.parse(closingTime);
-        return parkingService.updateParking(parkingId, name, description, image, city, address, longitude, latitude, oTime, cTime, pricePerHour);
+        return parkingService.updateParking(parkingId, name, description, image, oTime, cTime, pricePerHour);
     }
 
     @DeleteMapping(path = "/delete/{parkingId}")

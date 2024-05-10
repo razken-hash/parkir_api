@@ -32,6 +32,10 @@ public class BookingService {
         return bookingRepository.findBookingsByUser(user).orElseThrow(() -> new IllegalStateException("Error"));
     }
 
+    public Booking getBookingById(Integer bookingId) {
+        return bookingRepository.findBookingsById(bookingId).get();
+    }
+
     public List<Booking> getBookingsByStatus(Integer userId, BookingStatus bookingStatus) {
         List<Booking> bookings = getAllBookings(userId);
         return bookings.stream().filter(

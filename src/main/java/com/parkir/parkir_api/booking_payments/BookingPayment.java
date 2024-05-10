@@ -22,6 +22,8 @@ public class BookingPayment {
     private Long id;
 
     private String cardNumber;
+
+    @Column(name = "card_cvc")
     private String cardCVC;
     private String cardDate;
     private Double amount;

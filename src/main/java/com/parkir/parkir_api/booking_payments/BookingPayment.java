@@ -31,8 +31,8 @@ public class BookingPayment {
     private LocalTime time;
 
     @OneToOne
-    @JoinColumn(name = "booking_id")
     @JsonIgnoreProperties({"bookingPayment", "user"})
+    @Transient
     private Booking booking;
 
     public BookingPayment(
@@ -41,8 +41,7 @@ public class BookingPayment {
             String cardDate,
             Double amount,
             LocalDate date,
-            LocalTime time,
-            Booking booking
+            LocalTime time
     ) {
         this.cardNumber = cardNumber;
         this.cardCVC = cardCVC;
@@ -50,6 +49,5 @@ public class BookingPayment {
         this.amount = amount;
         this.date = date;
         this.time = time;
-        this.booking = booking;
     }
 }

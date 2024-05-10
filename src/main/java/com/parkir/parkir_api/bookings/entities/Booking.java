@@ -30,9 +30,6 @@ public class Booking {
     LocalTime endTime;
     Duration duration;
 
-//    @Transient
-//    BookingStatus status;
-
     @ManyToOne
     @JoinColumn(name = "user_id")
     @JsonIgnoreProperties({"bookmarks", "bookings", "payments"})
@@ -46,13 +43,14 @@ public class Booking {
     @JoinColumn(name = "booking_payment_id")
     private BookingPayment bookingPayment;
 
-    public Booking(LocalDate date, LocalTime beginTime, LocalTime endTime, Duration duration, User user, ParkingSpot parkingSpot) {
+    public Booking(LocalDate date, LocalTime beginTime, LocalTime endTime, Duration duration, User user, ParkingSpot parkingSpot, BookingPayment bookingPayment) {
         this.date = date;
         this.beginTime = beginTime;
         this.endTime = endTime;
         this.duration = duration;
         this.user = user;
         this.parkingSpot = parkingSpot;
+        this.bookingPayment = bookingPayment;
     }
 
     @JsonProperty("status")

@@ -1,17 +1,12 @@
 package com.parkir.parkir_api.users;
 
 import jakarta.transaction.Transactional;
-import org.apache.coyote.Response;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseStatus;
 
-import java.net.http.HttpResponse;
 import java.util.List;
-import java.util.Map;
 import java.util.Optional;
 
 @Service
@@ -24,7 +19,7 @@ public class UserService {
     }
 
     public User loginUser(User user) {
-        return userRepository.getUserByEmailAndHashedPassword(user.getEmail(), user.getHashedPassword()).orElseThrow(
+        return userRepository.getUserByEmailAndPassword(user.getEmail(), user.getPassword()).orElseThrow(
                 () -> new IllegalStateException("Auth Failed"));
     }
 
@@ -56,17 +51,17 @@ public class UserService {
     @Transactional
     public User recoverPassword(String email, String newPassword) {
         User user = userRepository.findByEmail(email).orElseThrow(() -> new IllegalStateException("User not exist"));
-        user.setHashedPassword(newPassword);
+        user.setPassword(newPassword);
         return user;
     }
 
     @Transactional
     public User changePassword(Integer userId, String currentPassword, String newPassword) {
         User user = userRepository.findById(userId).orElseThrow(() -> new IllegalStateException("User not exist"));
-        if (!user.getHashedPassword().equals(currentPassword)) {
+        if (!user.getPassword().equals(currentPassword)) {
             throw new IllegalStateException("User not exist");
         }
-        user.setHashedPassword(newPassword);
+        user.setPassword(newPassword);
         return user;
     }
 

@@ -35,19 +35,19 @@ public class Config {
 
             List<Address> addresses = Stream.of(
                     new Address("123 Main Street", "New York",
-                            40.7128, -74.0060),
+                            27.9766155, -0.20396),
                     new Address("456 Elm Street", "Los Angeles",
-                            34.0522, -118.2437),
+                            36.1691245, 1.3539002),
                     new Address("789 Lakeview Avenue", "Chicago",
-                            41.8781, -87.6298),
+                            36.7538259, 3.057841),
                     new Address("101 Broadway", "San Francisco",
-                            37.7749, -122.4194),
+                            36.4803023, 2.8009379),
                     new Address("222 Oak Street", "Houston",
-                            29.7604, -95.3698)
+                            36.5980966, 2.4085379)
             ).map(addressService::createAddress).toList();
 
             List<Parking> parkings = Stream.of(
-                    new Parking("Central Parking", "Conveniently located in the city center.",
+                    new Parking("Central Parking", "Conveniently located in the city center. It's near to the most needed services including hospitals, university, schools and administrations. It also offers a good welcoming as well as a driving guider.",
                             "image1.jpg", addresses.get(0), LocalTime.of(8, 0), LocalTime.of(20, 0), 10D
                     ),
 

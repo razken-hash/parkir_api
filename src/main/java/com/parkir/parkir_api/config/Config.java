@@ -48,23 +48,23 @@ public class Config {
 
             List<Parking> parkings = Stream.of(
                     new Parking("Central Parking", "Conveniently located in the city center. It's near to the most needed services including hospitals, university, schools and administrations. It also offers a good welcoming as well as a driving guider.",
-                            "image1.jpg", addresses.get(0), LocalTime.of(8, 0), LocalTime.of(20, 0), 10D
+                            "https://drive.google.com/uc?id=1lD1q-hRWiXptjvkSvUSTJS1uaIfYu3GA", addresses.get(0), LocalTime.of(8, 0), LocalTime.of(20, 0), 10D
                     ),
 
-                    new Parking("Green Park", "Eco-friendly with electric vehicle charging stations.",
-                            "image2.jpg", addresses.get(1), LocalTime.of(9, 0), LocalTime.of(18, 0), 8D
+                    new Parking("Green Park", "Green Park: Multi-level, secure facility with 24/7 access, EV charging stations, and easy access to downtown shops and offices. Offers both hourly and monthly rates.",
+                            "https://drive.google.com/uc?id=1lD1q-hRWiXptjvkSvUSTJS1uaIfYu3GA", addresses.get(1), LocalTime.of(9, 0), LocalTime.of(18, 0), 8D
                     ),
 
-                    new Parking("Lakeview Parking", "Scenic views of the nearby lake.",
-                            "image3.jpg", addresses.get(2), LocalTime.of(7, 30), LocalTime.of(22, 0), 12D
+                    new Parking("Lakeview Parking", "Green Park: Multi-level, secure facility with 24/7 access, EV charging stations, and easy access to downtown shops and offices. Offers both hourly and monthly rates.",
+                            "https://drive.google.com/uc?id=1lD1q-hRWiXptjvkSvUSTJS1uaIfYu3GA", addresses.get(2), LocalTime.of(7, 30), LocalTime.of(22, 0), 12D
                     ),
 
-                    new Parking("Downtown Garage", "Bustling downtown area convenience.",
-                            "image4.jpg", addresses.get(3), LocalTime.of(6, 0), LocalTime.of(23, 0), 15D
+                    new Parking("Downtown Garage", "Green Park: Multi-level, secure facility with 24/7 access, EV charging stations, and easy access to downtown shops and offices. Offers both hourly and monthly rates.",
+                            "https://drive.google.com/uc?id=1lD1q-hRWiXptjvkSvUSTJS1uaIfYu3GA", addresses.get(3), LocalTime.of(6, 0), LocalTime.of(23, 0), 15D
                     ),
 
-                    new Parking("Suburban Park", "Spacious suburban lot in a quiet neighborhood.",
-                            "image5.jpg", addresses.get(4), LocalTime.of(7, 0), LocalTime.of(19, 30), 7D
+                    new Parking("Suburban Park", "Green Park: Multi-level, secure facility with 24/7 access, EV charging stations, and easy access to downtown shops and offices. Offers both hourly and monthly rates.",
+                            "https://drive.google.com/uc?id=1lD1q-hRWiXptjvkSvUSTJS1uaIfYu3GA", addresses.get(4), LocalTime.of(7, 0), LocalTime.of(19, 30), 7D
                     )
             ).map(parkingService::createParking).toList();
 
@@ -72,25 +72,31 @@ public class Config {
                     Stream.of(
                             new Floor(1, "FloorA", "FloorA Description", parkings.get(0)),
                             new Floor(2, "FloorB", "FloorB Description", parkings.get(0)),
-                            new Floor(3, "FloorC", "FloorC Description", parkings.get(0))
+                            new Floor(3, "FloorC", "FloorC Description", parkings.get(0)),
+                            new Floor(1, "FloorA", "FloorA Description", parkings.get(1)),
+                            new Floor(2, "FloorB", "FloorB Description", parkings.get(1)),
+                            new Floor(3, "FloorC", "FloorC Description", parkings.get(1)),
+                            new Floor(1, "FloorA", "FloorA Description", parkings.get(2)),
+                            new Floor(2, "FloorB", "FloorB Description", parkings.get(2)),
+                            new Floor(3, "FloorC", "FloorC Description", parkings.get(2))
                     ).map(floorService::createFloor).toList();
 
             List<ParkingSpot> parkingSpots = List.of(
                     new ParkingSpot(1, floors.get(0)),
                     new ParkingSpot(2, floors.get(0)),
                     new ParkingSpot(3, floors.get(0)),
-                    new ParkingSpot(4, floors.get(0)),
+                    new ParkingSpot(4, floors.get(8)),
                     new ParkingSpot(5, floors.get(0)),
                     new ParkingSpot(1, floors.get(1)),
-                    new ParkingSpot(2, floors.get(1)),
-                    new ParkingSpot(3, floors.get(1)),
-                    new ParkingSpot(4, floors.get(1)),
+                    new ParkingSpot(2, floors.get(5)),
+                    new ParkingSpot(3, floors.get(4)),
+                    new ParkingSpot(4, floors.get(6)),
                     new ParkingSpot(5, floors.get(1)),
-                    new ParkingSpot(1, floors.get(2)),
-                    new ParkingSpot(2, floors.get(2)),
-                    new ParkingSpot(3, floors.get(2)),
-                    new ParkingSpot(4, floors.get(2)),
-                    new ParkingSpot(5, floors.get(2))
+                    new ParkingSpot(1, floors.get(3)),
+                    new ParkingSpot(2, floors.get(7)),
+                    new ParkingSpot(3, floors.get(8)),
+                    new ParkingSpot(4, floors.get(5)),
+                    new ParkingSpot(5, floors.get(4))
             );
 
             parkingSpots.forEach(parkingSpotService::createParkingSpot);
@@ -109,14 +115,41 @@ public class Config {
                             120D,
                             LocalDate.of(2024, 12, 23),
                             LocalTime.of(12, 34, 23)
+                    ),
+                    new BookingPayment(
+                            "1234567890123456",
+                            "123",
+                            "12/25",
+                            140D,
+                            LocalDate.of(2024, 12, 23),
+                            LocalTime.of(12, 34, 23)
+                    ), new BookingPayment(
+                            "1234567890123456",
+                            "123",
+                            "12/25",
+                            655D,
+                            LocalDate.of(2024, 12, 23),
+                            LocalTime.of(12, 34, 23)
+                    ),
+                    new BookingPayment(
+                            "1234567890123456",
+                            "123",
+                            "12/25",
+                            655D,
+                            LocalDate.of(2024, 12, 23),
+                            LocalTime.of(12, 34, 23)
                     )
             ).map(
                     bookingPaymentService::payBooking).toList();
 
             List<Booking> bookings = Stream.of(
-                    new Booking(LocalDate.of(2020, 12, 24), LocalTime.of(9, 0, 0), LocalTime.of(22, 0, 0), Duration.ofHours(11), users.get(0), parkingSpots.get(1), payments.get(0)),
-                    new Booking(LocalDate.of(2021, 12, 24), LocalTime.of(9, 0, 0), LocalTime.of(22, 0, 0), Duration.ofHours(11), users.get(0), parkingSpots.get(1), null),
-                    new Booking(LocalDate.of(2022, 12, 24), LocalTime.of(9, 0, 0), LocalTime.of(22, 0, 0), Duration.ofHours(11), users.get(1), parkingSpots.get(2), null)
+                    new Booking(LocalDate.of(2020, 12, 24), LocalTime.of(9, 0, 0), Duration.ofHours(11), users.get(0), parkingSpots.get(1), payments.get(0)),
+                    new Booking(LocalDate.of(2020, 12, 24), LocalTime.of(9, 0, 0), Duration.ofHours(11), users.get(0), parkingSpots.get(11), payments.get(1)),
+                    new Booking(LocalDate.of(2020, 12, 24), LocalTime.of(23, 0, 0), Duration.ofHours(11), users.get(0), parkingSpots.get(10), null),
+                    new Booking(LocalDate.of(2020, 12, 24), LocalTime.of(9, 0, 0), Duration.ofHours(11), users.get(0), parkingSpots.get(1), null),
+                    new Booking(LocalDate.of(2020, 12, 24), LocalTime.of(9, 0, 0), Duration.ofHours(11), users.get(0), parkingSpots.get(7), null),
+                    new Booking(LocalDate.of(2021, 12, 24), LocalTime.of(9, 0, 0), Duration.ofHours(11), users.get(0), parkingSpots.get(1), payments.get(2)),
+                    new Booking(LocalDate.of(2022, 12, 24), LocalTime.of(9, 0, 0), Duration.ofHours(11), users.get(1), parkingSpots.get(2), null)
             ).map(bookingService::bookParking).toList();
         };
     }

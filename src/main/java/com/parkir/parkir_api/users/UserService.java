@@ -31,6 +31,11 @@ public class UserService {
         return userRepository.save(user);
     }
 
+    public User signInWithGoogle(User user) {
+        Optional<User> optionalUser = userRepository.findByEmail(user.getEmail());
+        return optionalUser.orElseGet(() -> userRepository.save(user));
+    }
+
     public String requestOtp(@RequestParam("email") String email) {
         Optional<User> optionalUser = userRepository.findByEmail(email);
         if (optionalUser.isEmpty()) {

@@ -63,7 +63,7 @@ public class ParkingService {
         return parking;
     }
 
-    public Optional<Parking> getParkingById(Integer parkingId) {
-        return parkingRepository.findById(parkingId);
+    public Parking getParkingById(Integer parkingId) {
+        return parkingRepository.findById(parkingId).orElseGet(Parking::new);
     }
 }

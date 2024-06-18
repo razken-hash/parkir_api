@@ -24,6 +24,11 @@ public class ParkingSpotController {
         return parkingSpotService.getAllParkingSpots();
     }
 
+    @GetMapping("/{parkingSpotId}")
+    public ParkingSpot getParkingSpotById(@PathVariable("parkingSpotId") Integer parkingSpotId) {
+        return parkingSpotService.getParkingSpotById(parkingSpotId).orElseThrow(() -> new IllegalStateException("ParkingSpot Not Exists"));
+    }
+
     @PostMapping("/create")
     public ParkingSpot createParkingSpot(@RequestBody ParkingSpot parkingSpot) {
         return parkingSpotService.createParkingSpot(parkingSpot);

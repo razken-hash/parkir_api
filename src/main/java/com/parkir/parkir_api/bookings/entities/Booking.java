@@ -27,7 +27,7 @@ public class Booking {
 
     LocalDate date;
     LocalTime beginTime;
-    LocalTime endTime;
+//    LocalTime endTime;
     Duration duration;
 
     @ManyToOne
@@ -43,10 +43,10 @@ public class Booking {
     @JoinColumn(name = "booking_payment_id")
     private BookingPayment bookingPayment;
 
-    public Booking(LocalDate date, LocalTime beginTime, LocalTime endTime, Duration duration, User user, ParkingSpot parkingSpot, BookingPayment bookingPayment) {
+    public Booking(LocalDate date, LocalTime beginTime, Duration duration, User user, ParkingSpot parkingSpot, BookingPayment bookingPayment) {
         this.date = date;
         this.beginTime = beginTime;
-        this.endTime = endTime;
+//        this.endTime = endTime;
         this.duration = duration;
         this.user = user;
         this.parkingSpot = parkingSpot;
@@ -58,12 +58,12 @@ public class Booking {
         if (bookingPayment == null) {
             return BookingStatus.Canceled;
         }
-        if (LocalTime.now().isAfter(endTime)) {
-            return BookingStatus.Completed;
+        if (LocalDate.now().isAfter(date)) {
+                return BookingStatus.Completed;
         }
-        if (LocalTime.now().isAfter(beginTime) && LocalTime.now().isAfter(endTime)) {
-            return BookingStatus.OnGoing;
-        }
+//        if (LocalDate.now().isAfter(date) && LocalDate.now().isAfter(date.plus(duration))) {
+//            return BookingStatus.OnGoing;
+//        }
         return BookingStatus.Paid;
     }
 }

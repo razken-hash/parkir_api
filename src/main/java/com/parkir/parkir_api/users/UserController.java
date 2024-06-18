@@ -35,6 +35,11 @@ public class UserController {
         return userService.registerUser(user);
     }
 
+    @PostMapping("/signinwithgoogle")
+    public User signInWithGoogle(@RequestBody User user) {
+        return userService.signInWithGoogle(user);
+    }
+
     @PostMapping("/request_otp")
     public Map<String, String> requestOtp(@RequestParam("email") String email) {
         //TODO: Send an email

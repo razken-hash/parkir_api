@@ -27,7 +27,7 @@ public class ParkingController {
 
     @GetMapping("/{parkingId}")
     public Parking getParkingById(@PathVariable("parkingId") Integer parkingId) {
-        return parkingService.getParkingById(parkingId).get();
+        return parkingService.getParkingById(parkingId);
     }
 
     @PostMapping("/create")

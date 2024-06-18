@@ -63,7 +63,11 @@ public class BookingService {
         return booking;
     }
 
-    public Boolean getParkingSpotStatus(ParkingSpot parkingSpot, LocalTime beginTime, LocalTime endTime, LocalDate date) {
-        return !bookingRepository.existsByParkingSpotAndBeginTimeAndEndTimeAndDate(parkingSpot, beginTime, endTime, date);
+    public List<Booking> getAllBookings() {
+        return bookingRepository.findAll();
     }
+
+//    public Boolean getParkingSpotStatus(ParkingSpot parkingSpot, LocalTime beginTime, LocalTime endTime, LocalDate date) {
+//        return !bookingRepository.existsByParkingSpotAndBeginTimeAndEndTimeAndDate(parkingSpot, beginTime, endTime, date);
+//    }
 }

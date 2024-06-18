@@ -6,6 +6,7 @@ import com.parkir.parkir_api.users.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
+import java.time.Duration;
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.List;
@@ -18,5 +19,5 @@ public interface BookingRepository extends JpaRepository<Booking, Integer> {
 
     public Optional<Booking> findBookingsById(Integer bookingId);
 
-    public Boolean existsByParkingSpotAndBeginTimeAndEndTimeAndDate(ParkingSpot parkingSpot, LocalTime beginTime, LocalTime endTime, LocalDate date);
+//    public Boolean existsByParkingSpotAndBeginTimeAndEndTimeAndDate(ParkingSpot parkingSpot, LocalTime beginTime, LocalTime endTime, LocalDate date);
 }

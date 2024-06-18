@@ -6,6 +6,7 @@ import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import javax.swing.text.html.Option;
 import java.util.List;
 import java.util.Optional;
 
@@ -21,6 +22,9 @@ public class ParkingSpotService {
 
     public List<ParkingSpot> getAllParkingSpots() {
         return parkingSpotRepository.findAll();
+    }
+    public Optional< ParkingSpot> getParkingSpotById(Integer parkingSpotId) {
+        return parkingSpotRepository.findById(parkingSpotId);
     }
 
     public ParkingSpot createParkingSpot(ParkingSpot parkingSpot) {
